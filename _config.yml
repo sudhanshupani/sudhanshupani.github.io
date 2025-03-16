@@ -8,3 +8,4 @@ collections:
     output: true
     permalink: /blog/:path/
 baseurl: ""
+include: [_articles]
