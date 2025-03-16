@@ -5,6 +5,20 @@ title: All Articles
 
 <h1>All Articles</h1>
 
-{% for article in site.articles %}
-    {{ article.title }}<br>
-{% endfor %}
+{% if site.articles.size > 0 %}
+    <ul class="post-list">
+    {% for article in site.articles %}
+        <li>
+        <h2>
+            <a class="post-link" href="{{ article.url }}">{{ article.title }}</a>
+        </h2>
+        <span class="post-meta">{{ article.date | date: "%B %-d, %Y" }}</span>
+        {% if article.description %}
+            <p>{{ article.description }}</p>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No articles found.</p>
+{% endif %}
