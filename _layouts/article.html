@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<article class="article">
+
+  <header class="article-header">
+    <h1 class="article-title">{{ page.title }}</h1>
+    <p class="article-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+      {% if page.tags %}
+        • 
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="article-content">
+    {{ content }}
+  </div>
+
+</article>
