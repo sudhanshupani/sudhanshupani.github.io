@@ -6,5 +6,5 @@ google_analytics:
 collections:
   articles:
     output: true
-    permalink: /blog/:collection/:path/
+    permalink: /blog/:path/
 baseurl: ""
