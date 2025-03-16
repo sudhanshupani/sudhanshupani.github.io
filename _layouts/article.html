@@ -24,7 +24,7 @@ layout: default
   <section class="article-navigation">
     <h2>Other Articles</h2>
     <ul>
-      {% for post in site.posts %}
+      {% for post in site.articles %}
         <li>
           <a href="{{ post.url }}">{{ post.title }}</a>
           <span class="article-date">({{ post.date | date: "%B %-d, %Y" }})</span>
