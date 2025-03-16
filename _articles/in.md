@@ -1,6 +1,6 @@
 ---
 layout: article
-title: The IndusInd Bank Derivative Accounting Discrepancy: Regulatory Changes and Sector Implications 
+title: "The IndusInd Bank Derivative Accounting Discrepancy: Regulatory Changes and Sector Implications"
 date: 2025-03-16
 tags: [rbi, indusind, derivative_accounting, markets]
 ---
