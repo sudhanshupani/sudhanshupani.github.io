@@ -1,0 +1,11 @@
+<!-- docs/blog/index.html -->
+---
+layout: default
+title: All Articles
+---
+<h1>All Articles</h1>
+<ul>
+{% for article in site.articles %}
+  <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+{% endfor %}
+</ul>

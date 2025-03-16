@@ -1,0 +1,10 @@
+title: Sudhanshu Pani
+description: Dr Sudhanshu Pani is currently a faculty at the School of Business Management, Mumbai. 
+logo: /assets/img/logo.png
+
+google_analytics:
+collections:
+  articles:
+    output: true
+    permalink: /blog/:collection/:path/
+baseurl: "/sudhanshupani"

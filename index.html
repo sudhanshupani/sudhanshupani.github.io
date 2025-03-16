@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Sudhanshu Pani - Faculty Profile</title>
-</head>
-<body>
-  <h1>Sudhanshu Pani</h1>
-  <p>Faculty at Leading B School | Investment Economics</p>
-  <p>Welcome to my web presence!</p>
-</body>
-</html>
+---
+layout: default
+title: Home
+---
+
+<p>Welcome to my personal site. Here you can find my CV and more about me.</p>
+
+
+<h2>Recent Blog Posts</h2>
+<ul>
+{% for post in site.posts limit:3 %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+    <small>({{ post.date | date_to_string }})</small>
+  </li>
+{% endfor %}
+</ul>
+
+<p><a href="blog/index.html">Browse All Articles</a></p>
