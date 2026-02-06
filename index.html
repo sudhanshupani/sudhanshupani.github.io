@@ -4,11 +4,31 @@ title: Home
 ---
 
 <p>Welcome to my personal site. Here you can find my CV and more about me.</p>
+<p style="color: red; font-weight: bold;">DEBUG: Papers count = {{ site.data.papers.size | default: 0 }}</p>
 
+<h2>Research & Position Papers</h2>
+<div class="papers-container">
+  {% for paper in site.data.papers %}
+    <div style="margin-bottom: 25px; border-left: 3px solid #eee; padding-left: 15px;">
+      <h3 style="margin-bottom: 5px;">{{ paper.title }}</h3>
+      <small><strong>Category:</strong> {{ paper.category }}</small>
+      
+      <p style="font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px;">
+        {{ paper.abstract }}
+      </p>
+      
+      <a href="{{ paper.file_path }}" target="_blank" style="font-weight: bold;">
+        View Full PDF →
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+<hr>
 
 <h2>Recent Blog Posts</h2>
 <ul>
-{% for post in site.articles limit:3 %}
+{% for post in site.posts limit:3 %}
   <li>
     <a href="{{ post.url }}">{{ post.title }}</a>
     <small>({{ post.date | date_to_string }})</small>
