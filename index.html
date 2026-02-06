@@ -8,12 +8,12 @@ title: Home
 <h2>Research & Position Papers</h2>
 <div class="papers-container">
   {% for paper in site.data.papers %}
-    <div style="margin-bottom: 25px; border-left: 3px solid #eee; padding-left: 15px;">
+    <div style="margin-bottom: 25px; border-left: 3px solid #007bff; padding: 15px; background: #f9fcff; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.08);">
       <h3 style="margin-bottom: 5px;">{{ paper.title }}</h3>
       <small><strong>Category:</strong> {{ paper.category }}</small>
-      
+
       <p style="font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px;">
-        {{ paper.abstract }}
+  {{ paper.abstract | truncate: 300 }} {% if paper.abstract.size > 300 %}<a href="{{ paper.file_path }}" target="_blank">[Read more]</a>{% endif %}
       </p>
       
       <a href="{{ paper.file_path }}" target="_blank" style="font-weight: bold;">
