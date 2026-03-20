@@ -1,0 +1,40 @@
+---
+layout: default
+title: Research & Publications
+---
+
+<div class="research-container">
+  <h2>Research & Publications</h2>
+  <p>A repository of published journal articles, position papers, and active working papers.</p>
+
+  <hr>
+
+  {% for paper in site.data.papers %}
+  <div class="paper-entry" style="margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 0.5rem;">{{ paper.title }}</h3>
+    
+    <div class="metadata" style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
+      <strong>Category:</strong> {{ paper.category }} 
+      {% if paper.Journal %}| <strong>Journal:</strong> {{ paper.Journal }}{% endif %}
+    </div>
+
+    <div class="abstract-section" style="margin-bottom: 1rem;">
+      <details>
+        <summary style="cursor: pointer; color: #007bff; font-weight: bold;">View Full Abstract</summary>
+        <p style="margin-top: 1rem; line-height: 1.6; text-align: justify;">
+          {{ paper.abstract }}
+        </p>
+        {% if paper.keywords %}
+        <p><strong>Keywords:</strong> <em>{{ paper.keywords }}</em></p>
+        {% endif %}
+      </details>
+    </div>
+
+    <div class="links">
+      <a href="{{ paper.file_path }}" class="btn" target="_blank" style="background: #007bff; color: white; padding: 5px 15px; text-decoration: none; border-radius: 4px; font-size: 0.9rem;">
+        {% if paper.file_path contains 'doi.org' %} View Publisher Site {% else %} Download PDF {% endif %}
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
