@@ -13,4 +13,4 @@ abstract: "This article investigates a limit order market in high resolution. Th
 
 ### Publication Details
 * **Journal:** {{ page.journal }}
-* [View Article]({{ page.url }})
+* [View Article]({{ page.pdf_url }})
