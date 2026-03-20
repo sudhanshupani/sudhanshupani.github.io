@@ -3,36 +3,74 @@ layout: default
 title: Home
 ---
 
-<p>Welcome to my personal site. Here you can find my CV and more about me.</p>
+<p>Welcome to my personal site. Here you can find my CV and research repository.</p>
 
-<h2>Research & Position Papers</h2>
 <div class="papers-container">
-  {% for paper in site.data.papers %}
-    <div style="margin-bottom: 25px; border-left: 3px solid #007bff; padding: 15px; background: #f9fcff; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.08);">
-      <h3 style="margin-bottom: 5px;">{{ paper.title }}</h3>
-      <small><strong>Category:</strong> {{ paper.category }}</small>
+  <h2>Research & Publications</h2>
+  <p style="color: #666; font-size: 0.9em;">Click on any title to view the full abstract, keywords, and citation details.</p>
 
-      <p style="font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px;">
-  {{ paper.abstract | truncate: 300 }} {% if paper.abstract.size > 300 %}<a href="{{ paper.file_path }}" target="_blank">[Read more]</a>{% endif %}
-      </p>
+  {% comment %} 
+    Define the order of categories. Make sure these match exactly what you 
+    put in the 'category:' field of your .md files.
+  {% endcomment %}
+  {% assign categories = "Journal Article,Position Paper,Working Paper,Systems Strategy,Indic Knowledge Systems" | split: "," %}
+
+  {% for cat in categories %}
+    {% assign category_papers = site.research | where: "category", cat | sort: "date" | reverse %}
+    
+    {% if category_papers.size > 0 %}
+      <h3 style="margin-top: 40px; border-bottom: 2px solid #007bff; color: #007bff; padding-bottom: 5px;">
+        {{ cat }}s
+      </h3>
       
-      <a href="{{ paper.file_path }}" target="_blank" style="font-weight: bold;">
-        View Full PDF →
-      </a>
-    </div>
+      {% for paper in category_papers %}
+        <div style="margin-bottom: 25px; border-left: 3px solid #007bff; padding: 15px; background: #f9fcff; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+          <h4 style="margin-bottom: 5px; margin-top: 0;">
+            <a href="{{ paper.url }}" style="text-decoration: none; color: #333;">{{ paper.title }}</a>
+          </h4>
+          
+          {% if paper.journal %}
+            <small style="color: #555;"><strong>Journal:</strong> {{ paper.journal }}</small>
+          {% endif %}
+
+          <p style="font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px; text-align: justify;">
+            {{ paper.abstract | truncate: 280 }} 
+            <a href="{{ paper.url }}" style="color: #007bff;">[Read Full Abstract]</a>
+          </p>
+          
+          <div style="margin-top: 10px;">
+            {% if paper.pdf_url %}
+              <a href="{{ paper.pdf_url }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em;">
+                View Full PDF →
+              </a>
+            {% elsif paper.doi %}
+              <a href="{{ paper.doi }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em;">
+                View via Publisher →
+              </a>
+            {% elsif paper.url %}
+              <a href="{{ paper.url }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em;">
+                External Link →
+              </a>
+            {% endif %}
+            
+            <a href="{{ paper.url }}" style="color: #888; font-size: 0.85em; text-decoration: underline;">Details & Citation</a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
   {% endfor %}
 </div>
 
-<hr>
+<hr style="margin-top: 50px;">
 
 <h2>Recent Blog Posts</h2>
-<ul>
+<ul style="line-height: 1.8;">
 {% for post in site.articles limit:3 %}
   <li>
     <a href="{{ post.url }}">{{ post.title }}</a>
-    <small>({{ post.date | date_to_string }})</small>
+    <small style="color: #999;">({{ post.date | date: "%B %d, %Y" }})</small>
   </li>
 {% endfor %}
 </ul>
 
-<p><a href="blog/index.html">Browse All Articles</a></p>
+<p><a href="/blog/index.html" style="font-weight: bold;">Browse All Articles &rarr;</a></p>
