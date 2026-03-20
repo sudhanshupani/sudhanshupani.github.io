@@ -7,5 +7,9 @@ collections:
   articles:
     output: true
     permalink: /blog/:path/
+  research:
+    output: true
+    permalink: /research/:path/
+
 baseurl: ""
-include: [_articles]
+include: [_articles, _research]
