@@ -40,20 +40,24 @@ title: Home
           
           <div style="margin-top: 10px;">
             {% if paper.pdf_url %}
-              <a href="{{ paper.pdf_url }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em;">
-                View Full PDF →
+              <a href="{{ paper.pdf_url | relative_url }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em; color: #28a745;">
+                Download PDF (Preprint) →
               </a>
-            {% elsif paper.doi %}
-              <a href="{{ paper.doi }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em;">
-                View via Publisher →
+            {% endif %}
+            
+            {% if paper.doi %}
+              <a href="https://doi.org/{{ paper.doi | remove: 'https://doi.org/' }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em; color: #007bff;">
+                View via Publisher (DOI) →
               </a>
-            {% elsif paper.url %}
+            {% endif %}
+            
+            {% if paper.url and paper.pdf_url == nil and paper.doi == nil %}
               <a href="{{ paper.url }}" target="_blank" style="font-weight: bold; margin-right: 15px; font-size: 0.9em;">
                 External Link →
               </a>
             {% endif %}
             
-            <a href="{{ paper.url }}" style="color: #888; font-size: 0.85em; text-decoration: underline;">Details & Citation</a>
+            <a href="{{ paper.url }}" style="color: #888; font-size: 0.85em; text-decoration: underline; margin-left: auto;">Details & Citation</a>
           </div>
         </div>
       {% endfor %}
