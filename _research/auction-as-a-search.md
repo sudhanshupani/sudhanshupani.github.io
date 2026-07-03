@@ -13,9 +13,9 @@ abstract: "The tatonnement process in high frequency order driven markets is mod
 {{ page.abstract }}
 
 ### Publication Details
-* **Journal:** {{ page.journal }}
-* [View Article Preprint]({{ page.pdf_url | relative_url }})
-* [Publisher Link]({{ page.doi }})
+- **Journal:** {{ page.journal }}
+  - [View Article Preprint]({{ page.pdf_url | relative_url }})
+  - [Publisher Link]({{ page.doi }})
 
 
 
